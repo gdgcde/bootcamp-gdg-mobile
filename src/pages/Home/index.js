@@ -1,6 +1,6 @@
 import React from "react";
 import { Component1, CustomButton } from "../../components/Component1";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 export default class HomeScreen extends React.Component {
   constructor() {
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
 });
 
 HomeScreen.navigationOptions = ({ navigation }) => ({
-  title: "Tweets",
+  title: `Tweets - ${navigation.getParam("username")}`,
   headerTintColor: "#fff",
   headerStyle: {
     backgroundColor: "blue"

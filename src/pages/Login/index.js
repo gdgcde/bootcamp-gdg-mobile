@@ -1,12 +1,36 @@
 import React, { Component } from "react";
-import { Button } from 'react-native'
+import { View, Button, TextInput } from "react-native";
 
 export default class LoginScreen extends Component {
-  static navigationOptions = {
-    title: "Login"
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: ""
+    };
+  }
   render() {
     const { navigate } = this.props.navigation;
-    return <Button title="Go to Home" onPress={() => navigate("Home")} />;
+    const { username } = this.state;
+    return (
+      <View>
+        <TextInput
+          style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
+          onChangeText={username => this.setState({ username })}
+          value={this.state.username}
+        />
+        <Button
+          title="Go to Home"
+          onPress={() => navigate("Home", { username })}
+        />
+      </View>
+    );
   }
 }
+
+LoginScreen.navigationOptions = ({ navigation }) => ({
+  title: "Login",
+  headerTintColor: "#fff",
+  headerStyle: {
+    backgroundColor: "blue"
+  }
+});
