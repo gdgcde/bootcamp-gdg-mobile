@@ -1,12 +1,19 @@
-import React from "react";
+import React, { Component } from "react";
 import { View, Text } from "react-native";
 
-export const Component1 = props => {
-  return (
-    <View>
-      <Text>This is the state {props.name}: {props.state}!</Text>
-    </View>
-  );
-};
+export default class Component1 extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-export default Component1;
+  render() {
+    const { name, state } = this.props;
+    return (
+      <View>
+        <Text>
+          This is the state {name}: {state}!
+        </Text>
+      </View>
+    );
+  }
+}

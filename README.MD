@@ -33,6 +33,15 @@ V. Making your first changes
 
     2. Manually reloading the app
 
+VI. Basic concepts
+
+    1. State (branch state)
+    2. Props (branch props, check commits)
+    3. Style (branch styles)
+    4. Network (branch network)
+
+VII. Twitter app
+
 Refs:
 [1] Es un servidor http que compila el código JS usando Babel y sirve en el Expo app.
 [2] Reload or refreshes the entire app if a file changes, losing the state of the app.

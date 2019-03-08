@@ -1,5 +1,5 @@
 import React from "react";
-import { Component1 } from "./src/components/Component1";
+import { Component1, CustomButton } from "./src/components/Component1";
 import { StyleSheet, Text, View, Button } from "react-native";
 
 export default class App extends React.Component {
@@ -29,7 +29,7 @@ export default class App extends React.Component {
         <Component1 name="State A" state={stateA} />
         <Component1 name="State B" state={stateB} />
         <Component1 name="State C" state={stateC} />
-        <Button title="Switch states" onPress={this.switchValues} />
+        <CustomButton onClick={this.switchValues} title='Switch states' />
       </View>
     );
   }
