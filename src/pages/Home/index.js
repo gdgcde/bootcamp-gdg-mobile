@@ -1,27 +1,43 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { TweetsCard } from "../../components/TweetsCard";
+import { StyleSheet } from "react-native";
+import { Container, Content } from "native-base";
 
 export default class HomeScreen extends React.Component {
   constructor() {
     super();
+    this.state = {
+      tweets: []
+    };
+  }
+
+  async componentDidMount() {
+    try {
+      let response = await fetch("http://10.1.10.240:5000/tweets");
+      let tweets = await response.json();
+      this.setState({ tweets });
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   render() {
+    const { tweets } = this.state;
     return (
-      <View style={styles.container}>
-        
-      </View>
+      <Container>
+        <Content>
+          {tweets &&
+            tweets.map((tweet, idx) => <TweetsCard tweet={tweet} key={idx} />)}
+        </Content>
+      </Container>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  },
+    backgroundColor: "#fff"
+  }
 });
 
 HomeScreen.navigationOptions = ({ navigation }) => ({

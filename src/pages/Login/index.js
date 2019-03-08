@@ -42,6 +42,7 @@ export default class LoginScreen extends Component {
               />
             </Item>
             <Button
+              disabled={!username}
               onPress={() => navigate("Home", { username })}
               style={styles.button}
             >
@@ -66,12 +67,12 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 20,
     alignSelf: "center",
-    backgroundColor: '#1da1f2'
+    backgroundColor: "#1da1f2"
   },
   logo: {
     width: 100,
     height: 100,
-    alignSelf: "center",
+    alignSelf: "center"
   }
 });
 
