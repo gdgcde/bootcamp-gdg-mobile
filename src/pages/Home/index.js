@@ -2,6 +2,7 @@ import React from "react";
 import { TweetsCard } from "../../components/TweetsCard";
 import { StyleSheet } from "react-native";
 import { Container, Content } from "native-base";
+import socket from "socket.io-client";
 
 export default class HomeScreen extends React.Component {
   constructor() {
@@ -19,7 +20,26 @@ export default class HomeScreen extends React.Component {
     } catch (error) {
       console.error(error);
     }
+    this.subcribeToEvents();
   }
+
+  subcribeToEvents = () => {
+    console.log("SUBSCRIBE TO EVENTS")
+    const io = socket("http://10.1.10.240:5000");
+    io.on("tweet", data => {
+      let { tweets } = this.state;
+      tweets = [data, ...tweets];
+      this.setState({ tweets: tweets });
+    });
+    io.on("like", data => {
+      console.log("like sokcet")
+      let tweets = this.state.tweets.map(tweet =>
+        tweet._id === data._id ? data : tweet
+      );
+      console.log("Tweets", tweets)
+      this.setState({ tweets: tweets });
+    });
+  };
 
   render() {
     const { tweets } = this.state;
