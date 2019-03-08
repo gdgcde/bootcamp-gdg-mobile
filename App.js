@@ -1,4 +1,5 @@
 import React from "react";
+import { Component1 } from "./src/components/Component1";
 import { StyleSheet, Text, View, Button } from "react-native";
 
 export default class App extends React.Component {
@@ -25,9 +26,9 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Text>Open up App.js to start working on your app!</Text>
-        <Text>This is the state A: {stateA}!</Text>
-        <Text>This is the state B: {stateB}!</Text>
-        <Text>This is the state C: {stateC}!</Text>
+        <Component1 name="State A" state={stateA} />
+        <Component1 name="State B" state={stateB} />
+        <Component1 name="State C" state={stateC} />
         <Button title="Switch states" onPress={this.switchValues} />
       </View>
     );
