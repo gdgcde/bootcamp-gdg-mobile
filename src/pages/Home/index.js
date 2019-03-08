@@ -1,5 +1,6 @@
 import React from "react";
 import { TweetsCard } from "../../components/TweetsCard";
+import { TweetInput } from '../../components/TweetInput'
 import { StyleSheet } from "react-native";
 import { Container, Content } from "native-base";
 import socket from "socket.io-client";
@@ -46,6 +47,7 @@ export default class HomeScreen extends React.Component {
     return (
       <Container>
         <Content>
+          <TweetInput />
           {tweets &&
             tweets.map((tweet, idx) => <TweetsCard tweet={tweet} key={idx} />)}
         </Content>
