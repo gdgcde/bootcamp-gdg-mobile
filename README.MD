@@ -20,18 +20,33 @@ Cuando desarrollas con Expo, normalmente se escribe código y ejecuta el metro b
 pero luego se desea cargar la aplicación en su teléfono.
 También el cliente Expo abre el Expo dev tools, un panel de control para desarrollar la aplicación.
 
-    1. The Expo dev tools run on http://localhost:19002/
-    2. The Expo app run on http://localhost:19001/debugger-ui
+1. The Expo dev tools run on http://localhost:19002/
+2. The Expo app run on http://localhost:19001/debugger-ui
 
 V. Making your first changes
 
-    1. Can't see your changes?
+1. Can't see your changes?
 
-       a. Live reloading (default) [2] or Hot reloading [3]
-       c. Development mode
-       d. Restart the app
+   a. Live reloading (default) [2] or Hot reloading [3]
+   c. Development mode
+   d. Restart the app
 
-    2. Manually reloading the app
+2. Manually reloading the app
+
+VI. Basic concepts
+
+1. State (branch state)
+2. Props (branch props, check commits)
+3. Style (branch styles)
+
+VII. Twitter app
+
+1. Run "yarn add react-navigation native-base"
+2. Create a nav folder in src
+3. Move App.js to index.js, inside components/Home
+4. Create the login page with an input and send the username to the Home.
+5. Add The stack navigator inside index.js in nav folder
+6. Add Input for Login
 
 Refs:
 [1] Es un servidor http que compila el código JS usando Babel y sirve en el Expo app.
