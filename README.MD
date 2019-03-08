@@ -38,7 +38,6 @@ VI. Basic concepts
     1. State (branch state)
     2. Props (branch props, check commits)
     3. Style (branch styles)
-    4. Network (branch network)
 
 VII. Twitter app
 
