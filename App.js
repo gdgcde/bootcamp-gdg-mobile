@@ -29,7 +29,11 @@ export default class App extends React.Component {
         <Component1 name="State A" state={stateA} />
         <Component1 name="State B" state={stateB} />
         <Component1 name="State C" state={stateC} />
-        <CustomButton onClick={this.switchValues} title='Switch states' />
+        <View style={styles.buttonContainer}>
+          <CustomButton onClick={this.switchValues} title="Switch states" />
+          <CustomButton onClick={this.switchValues} title="Switch states" />
+          <CustomButton onClick={this.switchValues} title="Switch states" />
+        </View>
       </View>
     );
   }
@@ -41,5 +45,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center"
+  },
+  buttonContainer: {
+    flexDirection: 'column'
   }
 });
