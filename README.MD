@@ -41,11 +41,12 @@ VI. Basic concepts
 
 VII. Twitter app
 
-1. Run "yarn add react-navigation"
-2. Move App.js to index.js, inside components/Home
-3. Create the login page with an input and send the username to the Home.
-4. Add The stack navigator inside App.js
-5. Add Input for Login
+1. Run "yarn add react-navigation native-base"
+2. Create a nav folder in src
+3. Move App.js to index.js, inside components/Home
+4. Create the login page with an input and send the username to the Home.
+5. Add The stack navigator inside index.js in nav folder
+6. Add Input for Login
 
 Refs:
 [1] Es un servidor http que compila el código JS usando Babel y sirve en el Expo app.
