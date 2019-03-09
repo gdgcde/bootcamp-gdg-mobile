@@ -27,14 +27,15 @@ export default class HomeScreen extends React.Component {
 
   subcribeToEvents = () => {
     console.log("SUBSCRIBE TO EVENTS");
-    const io = socket("http://10.1.10.240:5000");
+    const io = socket("http://192.168.0.8:5000");
     io.on("tweet", data => {
+      console.log("News tweets", data)
       let { tweets } = this.state;
       tweets = [data, ...tweets];
       this.setState({ tweets: tweets });
     });
     io.on("like", data => {
-      console.log("like sokcet");
+      console.log("News like", data)
       let tweets = this.state.tweets.map(tweet =>
         tweet._id === data._id ? data : tweet
       );
