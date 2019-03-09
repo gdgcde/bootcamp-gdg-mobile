@@ -1,23 +1,24 @@
 import React from "react";
 import { TweetsCard } from "../../components/TweetsCard";
-import { TweetInput } from '../../components/TweetInput'
+import { TweetInput } from "../../components/TweetInput";
 import { StyleSheet } from "react-native";
-import { Container, Content } from "native-base";
+import { Container, Content, Spinner } from "native-base";
 import socket from "socket.io-client";
 
 export default class HomeScreen extends React.Component {
   constructor() {
     super();
     this.state = {
-      tweets: []
+      tweets: [],
+      loaded: false
     };
   }
 
   async componentDidMount() {
     try {
-      let response = await fetch("http://10.1.10.240:5000/tweets");
+      let response = await fetch("http://192.168.0.8:5000/tweets");
       let tweets = await response.json();
-      this.setState({ tweets });
+      this.setState({ tweets, loaded: true });
     } catch (error) {
       console.error(error);
     }
@@ -25,7 +26,7 @@ export default class HomeScreen extends React.Component {
   }
 
   subcribeToEvents = () => {
-    console.log("SUBSCRIBE TO EVENTS")
+    console.log("SUBSCRIBE TO EVENTS");
     const io = socket("http://10.1.10.240:5000");
     io.on("tweet", data => {
       let { tweets } = this.state;
@@ -33,21 +34,22 @@ export default class HomeScreen extends React.Component {
       this.setState({ tweets: tweets });
     });
     io.on("like", data => {
-      console.log("like sokcet")
+      console.log("like sokcet");
       let tweets = this.state.tweets.map(tweet =>
         tweet._id === data._id ? data : tweet
       );
-      console.log("Tweets", tweets)
+      console.log("Tweets", tweets);
       this.setState({ tweets: tweets });
     });
   };
 
   render() {
-    const { tweets } = this.state;
+    const { tweets, loaded } = this.state;
     return (
       <Container>
         <Content>
           <TweetInput />
+          {!loaded && <Spinner color="#1da1f2" />}
           {tweets &&
             tweets.map((tweet, idx) => <TweetsCard tweet={tweet} key={idx} />)}
         </Content>
